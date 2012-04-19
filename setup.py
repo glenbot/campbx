@@ -99,6 +99,7 @@ from distutils.core import setup
 
 setup(
   author = 'Glen Zangirolami',
+  author_email = 'glenbot@gmail.com',
   description = 'CampBX API Bindings',
   long_description = __doc__,
   fullname = 'campbx',

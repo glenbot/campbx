@@ -14,6 +14,15 @@ log.addHandler(log_handler)
 log.setLevel(logging.ERROR)
 
 
+class EndPointPartial(partial):
+    def __init__(self, *args, **kwargs):
+        self.name = kwargs['name']
+        super(EndPointPartial, self).__init__(*args, **kwargs)
+
+    def __repr__(self):
+        return unicode('<API method %s>' % self.name)
+
+
 class CampBX(object):
     """
     Camp BX API Class
@@ -96,4 +105,5 @@ class CampBX(object):
     def _create_endpoints(self):
         """Create all api endpoints using self.endpoint and partial from functools"""
         for k, v in self.endpoints.items():
-            self.__dict__[k] = partial(self._make_request, v)
+            name = '%s.%s' % (self.__class__.__name__, k)
+            self.__dict__[k] = EndPointPartial(self._make_request, v, name=name)
