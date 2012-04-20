@@ -75,6 +75,11 @@ Check your open orders::
        'Quantity': '15.00000000',
        'Stop-loss': 'No'}]}
 
+Donations
+=========
+
+If you would like to donate some coins, please donate to this address, 1EzebDR5wMvnSoQ5KQ1zF6UGcYr8qZSF4v
+
 License
 =======
 

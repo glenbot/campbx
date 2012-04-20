@@ -79,6 +79,11 @@ Endpoints
 
     endpoints/*
 
+Donations
+=========
+
+If you would like to donate some coins, please donate to this address, 1EzebDR5wMvnSoQ5KQ1zF6UGcYr8qZSF4v
+
 License
 =======
 
