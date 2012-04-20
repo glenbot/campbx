@@ -8,7 +8,7 @@ These endpoints are **public**. Username and password are not required. You can 
 Depth Table
 -----------
 
-Full market depth
+Full market depth. Each element in these two arrays has two members: first member is Price and second member is Quantity available at that price. Both numbers are rounded to two decimal points.
 
 Usage::
 
