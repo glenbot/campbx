@@ -106,7 +106,7 @@ setup(
   name = 'campbx',
   url = 'https://github.com/glenbot/campbx',
   download_url = 'https://github.com/glenbot/campbx',
-  version = '1.0',
+  version = '1.0.1',
   license = 'MIT',
   platforms = ['Linux','Windows'],
   packages = ['campbx'],

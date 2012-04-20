@@ -66,6 +66,15 @@ Check your open orders::
        'Quantity': '15.00000000',
        'Stop-loss': 'No'}]}
 
+Endpoints
+=========
+
+.. toctree::
+    :maxdepth: 1
+    :glob:
+
+    endpoints/*
+
 License
 =======
 

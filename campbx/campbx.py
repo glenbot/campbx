@@ -15,9 +15,9 @@ log.setLevel(logging.ERROR)
 
 
 class EndPointPartial(partial):
-    def __init__(self, *args, **kwargs):
-        self.name = kwargs['name']
-        super(EndPointPartial, self).__init__(*args, **kwargs)
+    def __init__(self, func, conf, name):
+        self.name = name
+        super(EndPointPartial, self).__init__(func, conf)
 
     def __repr__(self):
         return unicode('<API method %s>' % self.name)
@@ -69,7 +69,7 @@ class CampBX(object):
         else:
             self.log.setLevel(logging.ERROR)
 
-    def _make_request(self, conf, *args, **kwargs):
+    def _make_request(self, conf, call_name, post_params):
         """Make a request to the API and return data in a pythonic object"""
         endpoint, requires_auth = conf
 
@@ -81,13 +81,14 @@ class CampBX(object):
         # tack on authentication if needed
         if requires_auth:
             log.debug('Applying credentials for username %s' % self.username)
-            kwargs.update({
+            post_params.update({
                 'user': self.username,
                 'pass': self.password
             })
 
         # url encode all parameters
-        data = urlencode(kwargs)
+        data = urlencode(post_params)
+        log.debug('Post params: %s' % data)
 
         # gimme some bitcoins!
         try:
@@ -106,4 +107,4 @@ class CampBX(object):
         """Create all api endpoints using self.endpoint and partial from functools"""
         for k, v in self.endpoints.items():
             name = '%s.%s' % (self.__class__.__name__, k)
-            self.__dict__[k] = EndPointPartial(self._make_request, v, name=name)
+            self.__dict__[k] = EndPointPartial(self._make_request, v, name)
