@@ -9,6 +9,12 @@ About
 This library provides python bindings for the `CampBX bitcoin trading platform <http://campbx.com>`_.
 To obtain API access please `see the documenation at CampBX <https://campbx.com/api.php>`_.
 
+Note::
+  
+  Due to the nature of how CampBX has written their API services, your username/password is sent in
+  clear text in POST parameters. Currently, I have a helpdesk ticket out to allow the API endpoints to accept
+  hashed passwords for better security.
+
 Installation
 ============
 

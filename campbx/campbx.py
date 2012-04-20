@@ -15,18 +15,16 @@ log.setLevel(logging.ERROR)
 
 
 class EndPointPartial(partial):
-    def __init__(self, func, conf, name):
-        self.name = name
-        super(EndPointPartial, self).__init__(func, conf)
+    def __new__(cls, func, conf, _repr):
+        cls._repr = _repr
+        return super(EndPointPartial, cls).__new__(cls, func, conf)
 
     def __repr__(self):
-        return unicode('<API endpoint %s>' % self.name)
+        return unicode('<API endpoint %s>' % self._repr)
 
 
 class CampBX(object):
-    """
-    Camp BX API Class
-    """
+    """Camp BX API Class"""
     username = None
     password = None
     api_url = 'https://campbx.com/api/'
@@ -69,7 +67,7 @@ class CampBX(object):
         else:
             self.log.setLevel(logging.ERROR)
 
-    def _make_request(self, conf, call_name, post_params={}):
+    def _make_request(self, conf, post_params={}):
         """Make a request to the API and return data in a pythonic object"""
         endpoint, requires_auth = conf
 
@@ -80,7 +78,7 @@ class CampBX(object):
 
         # tack on authentication if needed
         if requires_auth:
-            log.debug('Applying credentials for username %s' % self.username)
+            log.debug('Post params: %s' % post_params)
             post_params.update({
                 'user': self.username,
                 'pass': self.password
@@ -88,7 +86,6 @@ class CampBX(object):
 
         # url encode all parameters
         data = urlencode(post_params)
-        log.debug('Post params: %s' % data)
 
         # gimme some bitcoins!
         try:
@@ -106,5 +103,5 @@ class CampBX(object):
     def _create_endpoints(self):
         """Create all api endpoints using self.endpoint and partial from functools"""
         for k, v in self.endpoints.items():
-            name = '%s.%s' % (self.__class__.__name__, k)
-            self.__dict__[k] = EndPointPartial(self._make_request, v, name)
+            _repr = '%s.%s' % (self.__class__.__name__, k)
+            self.__dict__[k] = EndPointPartial(self._make_request, v, _repr)
