@@ -20,7 +20,7 @@ class EndPointPartial(partial):
         super(EndPointPartial, self).__init__(func, conf)
 
     def __repr__(self):
-        return unicode('<API method %s>' % self.name)
+        return unicode('<API endpoint %s>' % self.name)
 
 
 class CampBX(object):
@@ -69,7 +69,7 @@ class CampBX(object):
         else:
             self.log.setLevel(logging.ERROR)
 
-    def _make_request(self, conf, call_name, post_params):
+    def _make_request(self, conf, call_name, post_params={}):
         """Make a request to the API and return data in a pythonic object"""
         endpoint, requires_auth = conf
 
