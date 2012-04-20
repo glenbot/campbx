@@ -8,7 +8,7 @@ Send Bitcoins to other CampBX users, bitcoint addresses, or get your deposit add
 Instant, Free Bitcoin Transfer
 ------------------------------
 
-If you need to send Bitcoins to other CampBX users, we recommend using this. This call provides two distinct advantages over the traditional method of sending Bitcoin to an address: 
+If you need to send Bitcoins to other CampBX users, CampBX recommend using this. This call provides two distinct advantages over the traditional method of sending Bitcoin to an address: 
 
 * You can send Bitcoin instantly - there is no need to wait for confirmations from the Bitcoin network.
 * You do not need to pay miner fees to transfer Bitcoins.

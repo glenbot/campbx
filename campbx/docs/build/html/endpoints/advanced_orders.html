@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced Orders &mdash; CampBX 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CampBX 1.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Fund Transfers" href="fund_transfers.html" />
+    <link rel="prev" title="Account Data" href="account_data.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="fund_transfers.html" title="Fund Transfers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="account_data.html" title="Account Data"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">CampBX 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="advanced-orders">
+<h1>Advanced Orders<a class="headerlink" href="#advanced-orders" title="Permalink to this headline">¶</a></h1>
+<p>Execute advanced orders with more options</p>
+<p><strong>Required Parameters</strong></p>
+<ul class="simple">
+<li>TradeMode -  <em>AdvancedBuy</em> or <em>AdvancedSell</em>.</li>
+<li>Price - Decimal or <em>Market</em>. The price at which you are willing to buy or sell the Bitcoins.</li>
+<li>Quantity - The amount of Bitcoins to buy or sell.</li>
+</ul>
+<p><em>Optional Parameters</em></p>
+<ul class="simple">
+<li>FillType - <em>Incremental</em>, <em>AON</em>, or <em>FOK</em>. Default is <em>Incremental</em>.</li>
+<li>DarkPool - Use darkpools. <em>Yes</em> or <em>No</em>. Default is <em>No</em>.</li>
+<li>Expiry - The expiraton on the order in the <em>YYYY/MM/DD</em> format.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Allowed Expiry range is 1 Hour through 31 Days.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that all parameters are case-sensitive. CampBX highly recommends executing small trades and experimenting with all of the possible parameter values before implementing them in your strategy.
+Expiry date field allows using many relative and absolute values and offers a lot of flexibility. If this is something that you rely on heavily in your strategy, please contact CampBX for details about additional formats.</p>
+</div>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">trade_advanced</span><span class="p">({</span>
+    <span class="s">&#39;TradeMode&#39;</span><span class="p">:</span> <span class="s">&#39;AdvancedBuy&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Price&#39;</span><span class="p">:</span> <span class="s">&#39;Market&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Quantity&#39;</span><span class="p">:</span> <span class="s">&#39;16.00&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;Success&#39;</span><span class="p">:</span> <span class="s">&#39;0&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="account_data.html"
+                        title="previous chapter">Account Data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fund_transfers.html"
+                        title="next chapter">Fund Transfers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/endpoints/advanced_orders.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="fund_transfers.html" title="Fund Transfers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="account_data.html" title="Account Data"
+             >previous</a> |</li>
+        <li><a href="../index.html">CampBX 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Glen Zangirolami.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
