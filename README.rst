@@ -10,9 +10,7 @@ To obtain API access please `see the documenation at CampBX <https://campbx.com/
 
 .. note::
   
-  Due to the nature of how CampBX has written their API services, your username/password is sent in
-  clear text in POST parameters. Currently, I have a helpdesk ticket out to allow the API endpoints to accept
-  hashed passwords for better security.
+  All endpoints that require authentication are using HTTPS.
 
 Installation
 ============

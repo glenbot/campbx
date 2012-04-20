@@ -77,8 +77,8 @@ class CampBX(object):
         request = urllib2.Request(url)
 
         # tack on authentication if needed
+        log.debug('Post params: %s' % post_params)
         if requires_auth:
-            log.debug('Post params: %s' % post_params)
             post_params.update({
                 'user': self.username,
                 'pass': self.password
