@@ -70,6 +70,13 @@ Check your open orders::
        'Quantity': '15.00000000',
        'Stop-loss': 'No'}]}
 
+Debug Mode
+==========
+
+To turn debug mode on and see more verbose output just use `debug_mode`::
+
+    c.debug_mode(True)
+
 Endpoints
 =========
 

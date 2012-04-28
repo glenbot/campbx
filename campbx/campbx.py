@@ -58,7 +58,7 @@ class CampBX(object):
 
     def debug_mode(self, toggle):
         """
-        Toddle debug mode for more detailed output
+        Toggle debug mode for more detailed output
           obj.debug_mode(True) - Turn debug mode on
           obj.debug_mode(False) - Turn debug mode off
         """
