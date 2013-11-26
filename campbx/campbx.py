@@ -13,6 +13,10 @@ log_handler.setFormatter(log_formatter)
 log.addHandler(log_handler)
 log.setLevel(logging.ERROR)
 
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+urllib2.install_opener(opener)
+
 
 class EndPointPartial(partial):
     def __new__(cls, func, conf, _repr):
