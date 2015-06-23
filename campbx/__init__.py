@@ -1,1 +1,1 @@
-from campbx import CampBX
+from .campbx import CampBX

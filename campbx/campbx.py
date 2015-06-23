@@ -1,9 +1,13 @@
-import urllib2
 import base64
 import simplejson as json
 import logging
-from urllib import urlencode
 from functools import partial
+try:
+    import urllib2
+    from urllib import urlencode
+except ImportError:
+    import urllib.request as urllib2
+    from urllib.parse import urlencode
 
 log = logging.getLogger(__name__)
 log_formatter = logging.Formatter('%(name)s - %(message)s')
@@ -14,7 +18,10 @@ log.addHandler(log_handler)
 log.setLevel(logging.ERROR)
 
 opener = urllib2.build_opener()
-opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+opener.addheaders = [
+    ('User-agent', 'Mozilla/5.0'),
+    ('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8'),
+]
 urllib2.install_opener(opener)
 
 
@@ -24,7 +31,7 @@ class EndPointPartial(partial):
         return super(EndPointPartial, cls).__new__(cls, func, conf)
 
     def __repr__(self):
-        return unicode('<API endpoint %s>' % self._repr)
+        return '<API endpoint %s>' % self._repr
 
 
 class CampBX(object):
@@ -89,14 +96,14 @@ class CampBX(object):
             })
 
         # url encode all parameters
-        data = urlencode(post_params)
+        data = urlencode(post_params).encode('utf-8')
 
         # gimme some bitcoins!
         try:
             log.debug('Requesting data from %s' % url)
             response = urllib2.urlopen(request, data)
             return json.loads(response.read())
-        except urllib2.URLError, e:
+        except urllib2.URLError as e:
             log.debug('Full error: %s' % e)
             if hasattr(e, 'reason'):
                 self.log.error('Could not reach host. Reason: %s' % e.reason)
